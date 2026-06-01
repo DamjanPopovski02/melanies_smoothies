@@ -19,8 +19,8 @@ my_dataframe = session.table('smoothies.public.fruit_options').select(col('FRUIT
 #streamlit.stop()
 
 pd_df=my_dataframe.to_pandas()
-streamlit.dataframe(pd_df)
-streamlit.stop()
+#streamlit.dataframe(pd_df)
+#streamlit.stop()
 
 ingredients_list = streamlit.multiselect(
     'Choose up to 5 ingredients: '
