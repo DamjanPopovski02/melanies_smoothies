@@ -44,7 +44,7 @@ if ingredients_list:
                 values ('""" + ingredients_string + """', '""" + name_on_order + """')"""
 
     time_to_insert = streamlit.button('Submit Order')
-        if time_to_insert:
+    if time_to_insert:
           session.sql(my_insert_stmt).collect()
           streamlit.success('Your Smoothie is ordered, ' +name_on_order+ '!', icon="✅")
 
