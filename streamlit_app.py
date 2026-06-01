@@ -47,4 +47,5 @@ if ingredients_list:
 
 import requests  
 smoothiefroot_response = requests.get("[https://my.smoothiefroot.com/api/fruit/watermelon](https://my.smoothiefroot.com/api/fruit/watermelon)")  
-streamlit.text(smoothiefroot_response.json())
+#streamlit.text(smoothiefroot_response.json())
+sf_df = streamlit.dataframe(data=smoothefroot_responce.json(), use_container_width=True)
