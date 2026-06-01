@@ -14,7 +14,7 @@ streamlit.write('The name on your Smoothie will be: ', name_on_order)
 
 cnx = streamlit.connection("snowflake")
 session = cnx.session()
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
+my_dataframe = session.table('smoothies.public.fruit_options').select(col('FRUIT_NAME'),col('SEARCH_ON'))
 #streamlit.dataframe(data=my_dataframe, use_container_width=True)
 #streamlit.stop()
 
@@ -37,7 +37,7 @@ if ingredients_list:
         search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
         streamlit.write('The search value for ', fruit_chosen,' is ', search_on, '.')
         streamlit.subheader(fruit_chosen + 'Nutrition Information')
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)
+        smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
         sf_df = streamlit.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
         time_to_insert = streamlit.button('Submit Order')
         my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
